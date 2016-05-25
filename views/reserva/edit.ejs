@@ -1,0 +1,16 @@
+
+<div class="container">
+<form action="/reserva/update/<%=reserva.id%>" method="POST" accept-charset="utf-8" class="form-signin">
+<label>Fecha</label>
+<input type="date" name="txtfecha"  class="form-control " value="<%= reserva.fecha %>"required >
+<label>Hora</label>
+<input type="time" name="txthora" class="form-control " value="<%= reserva.hora %>" required>
+<label>Numero de personas</label>
+<input type="number" name="txtnumpersonas" class="form-control" value="<%= reserva.numpersonas %>" required>
+<label>Persona de la reserva</label>
+<input type="text" name="txtanombre" class="form-control" value="<%= reserva.anombre %>" required>
+<br/>
+<input type="submit" class="btn btn-success  btn-lg" />
+
+</form>
+</div>

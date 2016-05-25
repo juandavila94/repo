@@ -1,0 +1,15 @@
+
+<div class="container">
+<form action="/mesa/update/<%=mesa.id%>" method="POST" accept-charset="utf-8" class="form-signin">
+<label>Numero de mesa</label>
+<input type="number" name="txtnumero"  class="form-control " value="<%= mesa.numero %>"required >
+<label>Capacidad</label>
+<input type="number" name="txtcapacidad" class="form-control " value="<%= mesa.capacidad %>" required>
+<label>Locacion</label>
+<input type="text" name="txtlocacion" class="form-control" value="<%= mesa.locacion %>" required>
+
+<br/>
+<input type="submit" class="btn btn-success  btn-lg" />
+
+</form>
+</div>

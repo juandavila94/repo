@@ -1,0 +1,22 @@
+
+<div class="container" style="max-width:300px;" > 
+<% if(flash && flash.err){ %>
+<ul class="alert alert-succes">
+<% Object.keys(flash.err).forEach(function(error){ %>
+<li> <%- JSON.stringify(flash.err[error]) %></li>
+<% }) %>
+</ul>
+<% } %>
+
+<form action="/session/create" method="POST" accept-charset="utf-8" class="form-signin">
+
+<label>Usuario</label>
+<input type="text" name="txtusuario"  class="form-control " required >
+<label>Contraseña</label>
+<input type="password" name="txtpassword" class="form-control " required>
+<br/>
+<input type="submit" class="btn btn-success  btn-lg" />
+
+</form>
+
+</div>

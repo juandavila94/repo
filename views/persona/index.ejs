@@ -1,0 +1,37 @@
+<div class="container">
+<ul class="nav nav-tabs nav nav-tabs nav-justified" >
+  <li role="presentation" class="active" ><a href="/producto">Productos</a></li>
+  <li role="presentation"><a href="/platillo">Menu</a></li>
+  <li role="presentation"><a href="/persona">Empleados</a></li>
+  <li role="presentation"><a href="/mesa">Mesas</a></li>
+  <li role="presentation"><a href="/reserva">Reservas</a></li>
+</ul>
+	
+	<h2>Usuarios registrados</h2>
+	<table class="table table-hover">
+		<th>Nombre</th>
+		<th>Apellido</th>
+		<th colspan="2" class="text-center">Acciones</th>
+		<% _.each(personas, function(persona) { %>
+		<tr>
+			<td><%=persona.nombre%></td>	
+			<td><%=persona.apellido%></td>
+			<td>
+				<a href="/persona/show/<%=persona.id%>" class="btn btn-success btn-sm">Detalles</a>
+			</td>
+			<td>
+				<form action="/persona/destroy/<%= persona.id%>" method="POST" accept-charset="utf-8">
+					<input type="hidden" name="_method" value="delete"/>
+					<input type="submit" class="btn btn-sm btn-danger" value="Eliminar"/>
+					<input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+
+				</form>
+
+			</td>
+
+		</tr>
+		<%})%>
+	</table>
+
+	
+</div>

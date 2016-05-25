@@ -1,0 +1,41 @@
+
+<div class="container" >
+
+<ul class="nav nav-tabs nav nav-tabs nav-justified" >
+  <li role="presentation" class="active" ><a href="/home">Home</a></li>
+  <li role="presentation"><a href="/historia">Conocenos</a></li>
+  <li role="presentation"><a href="/reservas">Haz una reserva!</a></li>
+  <li role="presentation"><a href="/ubicacion">Ubicanos</a></li>
+</ul>
+<div class="container2" style="max-width:500px;  margin:0 auto;">
+<h1>GRACIAS POR HACER TU RESERVA!</h1>
+<!--<img src="assets/images/reserva2.jpg"  style="width:304px;height:228px;">
+<img src="images/reserva2.png"  style="width:304px;height:228px;">-->
+
+<p><span class="glyphicon glyphicon-envelope" style="font-size: 10.2em;"></span></p><!-- <%if(req.user.rol=="1"){%>
+	<h2>Hola administrador</h2>
+<%}else{%>
+	<h2>Acceso no permitido</h2>
+<%}%>     -->
+<h2>Reservas</H2>
+	<ul>
+	<li><%= reserva.fecha %></li>
+	<li><%= reserva.hora %></li>
+	<li><%= reserva.numpersonas %></li>
+	<li><%= reserva.anombre %></li>
+	<%_.each(reserva.mesas, function(mesa){%>
+	<li> <%= mesa.numero %></li>
+	<% }); %>
+	</ul>
+
+<!-- 	<form action="/reserva/edit/<%=reserva.id %>" method="POST" accept-charset="utf-8">
+	<button type="submit" class="btn btn-warning">EDITAR</button>
+	</form> -->
+	   <a href="/home" class="btn btn-info" role="button">Regresar</a>
+</div>
+<script> 
+
+ alert(JSON.stringify(reserva));
+ console.log(reserva);
+</script>    
+</div>

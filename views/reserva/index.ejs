@@ -1,0 +1,42 @@
+<div class="container">
+<ul class="nav nav-tabs nav nav-tabs nav-justified" >
+  <li role="presentation" class="active" ><a href="/producto">Productos</a></li>
+  <li role="presentation"><a href="/platillo">Menu</a></li>
+  <li role="presentation"><a href="/persona">Empleados</a></li>
+  <li role="presentation"><a href="/mesa">Mesas</a></li>
+  <li role="presentation"><a href="/reserva">Reservas</a></li>
+</ul>
+	
+	<h2>Reservas</h2>
+	<table class="table table-hover">
+		<th>Fecha</th>
+		<th>Hora</th>
+		<th>Numero de personas</th>
+		<th>Cliente</th>
+		<th>Editar</th>
+		<th >Eliminar</th>
+		<% _.each(reservas, function(reserva) { %>
+		<tr>
+			<td><%=reserva.fecha%></td>	
+			<td><%=reserva.hora%></td>
+			<td><%=reserva.numpersonas%></td>
+			<td><%=reserva.anombre%></td>
+			<td>
+				<a href="/reserva/show/<%=reserva.id%>" class="btn btn-success btn-sm">Detalles</a>
+			</td>
+			<td>
+				<form action="/reserva/destroy/<%= reserva.id%>" method="POST" accept-charset="utf-8">
+					<input type="hidden" name="_method" value="delete"/>
+					<input type="submit" class="btn btn-sm btn-danger" value="Eliminar"/>
+					<input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+
+				</form>
+
+			</td>
+
+		</tr>
+		<%})%>
+	</table>
+
+	
+</div>

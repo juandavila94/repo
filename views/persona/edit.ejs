@@ -1,0 +1,18 @@
+
+<div class="container">
+<form action="/persona/update/<%=persona.id%>" method="POST" accept-charset="utf-8" class="form-signin">
+<label>Nombre</label>
+<input type="text" name="txtNombre"  class="form-control " value="<%= persona.nombre %>"required >
+<label>Apellido</label>
+<input type="text" name="txtApellido" class="form-control " value="<%= persona.apellido %>" required>
+<label>Usuario</label>
+<input type="text" name="txtUsuario" class="form-control" value="<%= persona.usuario %>" required>
+<label>Contrasenia</label>
+<input type="text" name="txtContrasenia" class="form-control" value="<%= persona.contrasena %>" required >
+<label>Email</label>
+<input type="email" name="txtEmail" class="form-control" value="<%= persona.email %>" required>
+<br/>
+<input type="submit" class="btn btn-success  btn-lg" />
+
+</form>
+</div>

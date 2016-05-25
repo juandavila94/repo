@@ -1,0 +1,13 @@
+<div class="container">
+	<h2>INFORMACION DEL USUARIO</H2>
+	<ul>
+	<li><%= producto.nombre %></li>
+	<li><%= producto.grasa %></li>
+	<li><%= producto.sal %></li>
+	<li><%= producto.azucar %></li>
+	</ul>
+
+	<form action="/producto/edit/<%=producto.id %>" method="POST" accept-charset="utf-8">
+	<button type="submit" class="btn btn-warning">EDITAR</button>
+	</form>
+	</div>

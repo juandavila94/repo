@@ -1,0 +1,11 @@
+<div class="container">
+	<h2>Informacíon del platillo</H2>
+	<ul>
+	<li><%= platillo.nombre %></li>
+	<li><%= platillo.precio %></li>
+	</ul>
+
+	<form action="/platillo/edit/<%=platillo.id %>" method="POST" accept-charset="utf-8">
+	<button type="submit" class="btn btn-warning">EDITAR</button>
+	</form>
+	</div>

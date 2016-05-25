@@ -1,0 +1,51 @@
+<div class="container">
+<ul class="nav nav-tabs nav nav-tabs nav-justified" >
+  <li role="presentation" class="active" ><a href="/producto">Productos</a></li>
+  <li role="presentation"><a href="/platillo">Menu</a></li>
+  <li role="presentation"><a href="/persona">Empleados</a></li>
+  <li role="presentation"><a href="/mesa">Mesas</a></li>
+  <li role="presentation"><a href="/reserva">Reservas</a></li>
+</ul>
+    
+<div class="container2" style="max-width:300px;  margin:0 auto;">
+<h1>HORARIOS</h1>
+
+
+<label>HORA DE ENTRADA</label>
+<input type="TIME" id="myText"  class="form-control " step="600" required style="font-size: 1.5em;">
+<label>HORA DE SALIDA)</label>
+<input type="time" id="myText2" class="form-control" step="600" style="font-size: 1.5em;" required>
+
+
+<input type="submit" onclick="myFunction()" value="Cambiar Horarios" class="btn btn-success  btn-lg" />
+<p id="demo"></p>
+<p id="demo2"></p>
+<script>
+function myFunction() {
+    var x = document.getElementById("myText");
+    var y= document.getElementById("myText2");
+    var currentVal = x.value;
+      var currentVal2 = y.value;
+    
+   
+        document.getElementById("demo").innerHTML =  "<br>Hora de entrada nueva: " + currentVal;
+        document.getElementById("demo2").innerHTML =  "<br>Hora de salida nueva: " + currentVal2;
+
+    if (typeof(Storage) !== "undefined") {
+    // Store
+    localStorage.setItem("entrada",currentVal);
+    localStorage.setItem("salida",  currentVal2);
+    // Retrieve
+    
+}
+}
+</script>
+
+
+</div>
+    
+</div>
+
+
+
+

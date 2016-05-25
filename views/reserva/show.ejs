@@ -1,0 +1,13 @@
+<div class="container">
+	<h2>Reservas</H2>
+	<ul>
+	<li><%= reserva.fecha %></li>
+	<li><%= reserva.hora %></li>
+	<li><%= reserva.numpersonas %></li>
+	<li><%= reserva.anombre %></li>
+	</ul>
+
+	<form action="/reserva/edit/<%=reserva.id %>" method="POST" accept-charset="utf-8">
+	<button type="submit" class="btn btn-warning">EDITAR</button>
+	</form>
+	</div>

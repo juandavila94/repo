@@ -1,0 +1,17 @@
+
+<div class="container">
+<form action="/producto/update/<%=producto.id%>" method="POST" accept-charset="utf-8" class="form-signin">
+<label>Nombre</label>
+<input type="text" name="txtNombre"  class="form-control " value="<%= producto.nombre %>"required >
+<label>Grasa</label>
+<input type="number" name="txtgrasa" class="form-control " value="<%= producto.grasa %>" required>
+<label>Sal</label>
+<input type="number" name="txtsal" class="form-control" value="<%= producto.sal %>" required>
+<label>Azucar</label>
+<input type="number" name="txtazucar" class="form-control" value="<%= producto.azucar %>" required >
+
+<br/>
+<input type="submit" class="btn btn-success  btn-lg" />
+
+</form>
+</div>

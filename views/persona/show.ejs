@@ -1,0 +1,12 @@
+<div class="container">
+	<h2>INFORMACION DEL USUARIO</H2>
+	<ul>
+	<li><%= persona.nombre %></li>
+	<li><%= persona.apellido %></li>
+	<li><%= persona.email %></li>
+	</ul>
+
+	<form action="/persona/edit/<%=persona.id %>" method="POST" accept-charset="utf-8">
+	<button type="submit" class="btn btn-warning">EDITAR</button>
+	</form>
+	</div>
