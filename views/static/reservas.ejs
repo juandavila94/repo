@@ -1,9 +1,5 @@
 
 <div class="container" >
-
- <input type="time" id="myTime" min="20:00" max="22:00">
-
-
 <ul class="nav nav-tabs nav nav-tabs nav-justified" >
   <li role="presentation" class="active" ><a href="/home">Home</a></li>
   <li role="presentation"><a href="/historia">Conocenos</a></li>
@@ -12,10 +8,11 @@
 </ul>
 <div class="container2" style="max-width:300px;  margin:0 auto;">
 <h1>RESERVAS</h1>
+
 <form action="/reserva/createxcliente" method="POST" accept-charset="utf-8" class="form-signin">
 
 <label>Fecha</label>
-<input type="date" name="txtfecha"  class="form-control " required style="font-size: 1.5em;">
+<input type="date" id="txtfecha" name="txtfecha"  class="form-control " required style="font-size: 1.5em;" max='2017-01-01' >
 <label>Hora </label>
 <input type="time" id="txthora" name="txthora" class="form-control" step="600" style="font-size: 1.5em;" required>
 <label>Numero de personas(máximo 25 por reserva) </label>
@@ -27,25 +24,35 @@
 <input type="submit" class="btn btn-success  btn-lg" />
 
 
-
-
-<div id="result"></div>
+<br/>
+Recuerda que los horario son de <div id="result"> </div> hasta
 <div id="result2"></div>
 
-
+<div id="result3"></div>
 <script>
 document.getElementById("result").innerHTML = localStorage.getItem("entrada");
 document.getElementById("result2").innerHTML = localStorage.getItem("salida");
 
-
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+ if(dd<10){
+        dd='0'+dd
+    } 
+    if(mm<10){
+        mm='0'+mm
+    } 
+today = yyyy+'-'+mm+'-'+dd;
+localStorage.setItem("fechaActual",today);
 $(document).ready(function(){
-
-var x = document.getElementById("myTime").min = "16:00";
-
 var a = document.getElementById("txthora").min = localStorage.getItem("entrada");
 var b= document.getElementById("txthora").max = localStorage.getItem("salida");
+var x = document.getElementById("txtfecha").min = localStorage.getItem("fechaActual");
 })
 </script>
 </form>
+
+
 </div>
 </div>

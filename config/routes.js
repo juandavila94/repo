@@ -48,7 +48,8 @@ module.exports.routes = {
   '/historia': {view: 'static/historia'},
   '/reservas': {view: 'static/reservas'},
   '/ubicacion': {view: 'static/ubicacion'},
-  '/storage': {view: 'static/localstorage'},
+  '/horarios': {view: 'static/localstorage'},
+  '/sincupo': {view: 'static/sincupo'},
   '/email' : 'EmailController.sendEmail'
  
 

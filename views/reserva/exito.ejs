@@ -9,28 +9,23 @@
 </ul>
 <div class="container2" style="max-width:500px;  margin:0 auto;">
 <h1>GRACIAS POR HACER TU RESERVA!</h1>
-<!--<img src="assets/images/reserva2.jpg"  style="width:304px;height:228px;">
-<img src="images/reserva2.png"  style="width:304px;height:228px;">-->
-
 <p><span class="glyphicon glyphicon-envelope" style="font-size: 10.2em;"></span></p><!-- <%if(req.user.rol=="1"){%>
 	<h2>Hola administrador</h2>
 <%}else{%>
 	<h2>Acceso no permitido</h2>
 <%}%>     -->
-<h2>Reservas</H2>
-	<ul>
-	<li><%= reserva.fecha %></li>
-	<li><%= reserva.hora %></li>
-	<li><%= reserva.numpersonas %></li>
-	<li><%= reserva.anombre %></li>
+<h2>Reserva</H2>
+	<ul class="list-group">
+	<li class="list-group-item"> FECHA:<%= reserva.fecha %></li>
+	<li class="list-group-item">HORA: <%= reserva.hora %></li>
+	<li class="list-group-item">RESERVA PARA :<%= reserva.numpersonas %> PERSONAS</li>
+	<li class="list-group-item"> A NOMBRE DE : <%= reserva.anombre %></li>
 	<%_.each(reserva.mesas, function(mesa){%>
-	<li> <%= mesa.numero %></li>
+	<li class="list-group-item"> <%= mesa.numero %></li>
 	<% }); %>
 	</ul>
 
-<!-- 	<form action="/reserva/edit/<%=reserva.id %>" method="POST" accept-charset="utf-8">
-	<button type="submit" class="btn btn-warning">EDITAR</button>
-	</form> -->
+
 	   <a href="/home" class="btn btn-info" role="button">Regresar</a>
 </div>
 <script> 
