@@ -43,54 +43,40 @@ new:function (req, res){
 		var mesaObj6={id:6}
 		var mesasArray = [];
 		var cantidad=req.param('txtnumpersonas');
-		var today = new Date();
-var dd = today.getDate();
-var mm = today.getMonth()+1; //January is 0!
-var yyyy = today.getFullYear();
- if(dd<10){
-        dd='0'+dd
-    } 
-    if(mm<10){
-        mm='0'+mm
-    } 
-today = yyyy+'-'+mm+'-'+dd;
- console.log(today);
+	
 		if(cantidad<=5){mesasArray=[mesaObj1];}
 			else if(cantidad<=10&&cantidad>5){mesasArray=[mesaObj1,mesaObj2];}
 			else if(cantidad<=15&&cantidad>10){mesasArray=[mesaObj1,mesaObj2,mesaObj3];}
 			else if(cantidad<=20&&cantidad>15){mesasArray=[mesaObj1,mesaObj2,mesaObj3,mesaObj4];}
 			else if(cantidad<=25&&cantidad>20){mesasArray=[mesaObj1,mesaObj2,mesaObj3,mesaObj4,mesaObj5];}
-		var reservaObj={
+			var reservaObj={
 			fecha:req.param('txtfecha'),
-			// fecha:today,
 			hora:req.param('txthora'),
 			anombre:req.param('txtanombre'),
 			numpersonas:req.param('txtnumpersonas'),
 			cliente:userObj,
 			mesas:mesasArray
-			//'Mon May 31 2016 00:00:00 GMT-0500 (Hora est. Pacífico, Sudamérica)'
+			
 		}
-	Reserva.find().where({fecha:req.param('txtfecha')}).exec(function (err, fechas){
-  if (err) {
-    console.log(err);
-  }
-  var lista = [];
-  var capacidad=parseInt("0");
+			Reserva.find().where({fecha:req.param('txtfecha')}).where({hora:req.param('txthora')}).exec(function (err, fechas){
+  			if (err) { console.log(err);  }
+  				var lista = [];
+  				var capacidad=parseInt("0");
                     fechas.forEach(function(cupo) {
                     lista.push(cupo.fecha);  
                     capacidad=capacidad+parseInt(cupo.numpersonas);
                     });
-                    console.log(lista); 
-                    console.log("fecha"+req.param('txtfecha'));
- console.log("capacidad"+capacidad);
- if (capacidad>100)
- 	res.redirect('/sincupo');
-else {
+                    console.log("lista de reservas el mismo dia"+lista); 
+                    console.log("fecha requerida= "+req.param('txtfecha'));
+ 					console.log("cupo restante:"+(100-capacidad));
+ 					if (capacidad>100)
+ 					res.redirect('/sincupo');
+					else {
 
-	Reserva.create(reservaObj,function(err,reserva){
-			if(err){ 
-				console.log(JSON.stringify(err));
-				req.session.flash={
+					Reserva.create(reservaObj,function(err,reserva){
+					if(err){ 
+					console.log(JSON.stringify(err));
+					req.session.flash={
 					err:err
 				}
 

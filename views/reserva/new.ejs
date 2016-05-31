@@ -1,12 +1,5 @@
 
 <div class="container" style="max-width:350px;" > 
-<% if(flash && flash.err){ %>
-<ul class="alert alert-succes">
-<% Object.keys(flash.err).forEach(function(error){ %>
-<li> <%- JSON.stringify(flash.err[error]) %></li>
-<% }) %>
-</ul>
-<% } %>
 
 <form action="/reserva/create" method="POST" accept-charset="utf-8" class="form-signin">
 

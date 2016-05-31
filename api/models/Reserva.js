@@ -9,7 +9,7 @@ module.exports = {
 
   attributes: {
   	fecha:{
-        type:'date',required:true
+        type:'string',required:true
         
       },
       
