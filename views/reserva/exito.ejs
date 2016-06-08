@@ -20,9 +20,10 @@
 	<li class="list-group-item">HORA: <%= reserva.hora %></li>
 	<li class="list-group-item">RESERVA PARA :<%= reserva.numpersonas %>  PERSONA/S</li>
 	<li class="list-group-item"> A NOMBRE DE : <%= reserva.anombre %></li>
-	<%_.each(reserva.mesas, function(mesa){%>
+	<li class="list-group-item"> NUMERO DE MESAS: <%= reserva.nummesas %></li>
+	<!-- <%_.each(reserva.mesas, function(mesa){%>
 	<li class="list-group-item"> <%= mesa.numero %></li>
-	<% }); %>
+	<% }); %> -->
 	</ul>
 
 

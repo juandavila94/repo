@@ -28,6 +28,8 @@ module.exports.policies = {
   '*': [ 'passport' , 'sessionAuth'],
   'auth': {
   '*': ['passport']},
+  //hasta aqui estaba
+  'PruebaController':{'*': true}
   /*,
   
  '*': ['flash'],

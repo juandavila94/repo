@@ -29,14 +29,18 @@ module.exports = {
 
       anombre:{
          type:'string',required:true
-      },
-
-      mesas:{
-      	collection:'mesa',
-      	via:'reservas',
-         dominant: true
-
+       },
+      nummesas:{
+        type:'int',required:true,defaultsTo:'1'
       }
+      // ,
+
+      // mesas:{
+      // 	collection:'mesa',
+      // 	via:'reservas',
+      //    dominant: true
+
+      // }
   }
 };
 

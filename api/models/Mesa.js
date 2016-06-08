@@ -20,12 +20,13 @@ module.exports = {
 
       locacion:{
         type:'string',required:true,defaultsTo:'salon central'
-      },
-
-      reservas:{
-      	collection:'reserva',
-        via:'mesas'
       }
+      // ,
+
+      // reservas:{
+      // 	collection:'reserva',
+      //   via:'mesas'
+      // }
   }
 };
 

@@ -50,8 +50,8 @@ module.exports.routes = {
   '/ubicacion': {view: 'static/ubicacion'},
   '/horarios': {view: 'static/localstorage'},
   '/sincupo': {view: 'static/sincupo'},
-  '/email' : 'EmailController.sendEmail'
- 
+  '/email' : 'EmailController.sendEmail',
+ '/a' : '/prueba'
 
   /***************************************************************************
   *                                                                          *

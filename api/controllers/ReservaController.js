@@ -41,21 +41,26 @@ new:function (req, res){
 		var mesaObj4={id:4}
 		var mesaObj5={id:5}
 		var mesaObj6={id:6}
-		var mesasArray = [];
+		var mesasArray;
 		var cantidad=req.param('txtnumpersonas');
-	
-		if(cantidad<=5){mesasArray=[mesaObj1];}
-			else if(cantidad<=10&&cantidad>5){mesasArray=[mesaObj1,mesaObj2];}
-			else if(cantidad<=15&&cantidad>10){mesasArray=[mesaObj1,mesaObj2,mesaObj3];}
-			else if(cantidad<=20&&cantidad>15){mesasArray=[mesaObj1,mesaObj2,mesaObj3,mesaObj4];}
-			else if(cantidad<=25&&cantidad>20){mesasArray=[mesaObj1,mesaObj2,mesaObj3,mesaObj4,mesaObj5];}
+		if (cantidad<=5){mesasArray=1;}
+			else if(cantidad<=10&&cantidad>5){mesasArray=2;}
+			else if(cantidad<=15&&cantidad>10){mesasArray=3;}
+			else if(cantidad<=20&&cantidad>15){mesasArray=4;}
+			else if(cantidad<=25&&cantidad>20){mesasArray=5;}
+		// if(cantidad<=5){mesasArray=[mesaObj1];}
+		// 	else if(cantidad<=10&&cantidad>5){mesasArray=[mesaObj1,mesaObj2];}
+		// 	else if(cantidad<=15&&cantidad>10){mesasArray=[mesaObj1,mesaObj2,mesaObj3];}
+		// 	else if(cantidad<=20&&cantidad>15){mesasArray=[mesaObj1,mesaObj2,mesaObj3,mesaObj4];}
+		// 	else if(cantidad<=25&&cantidad>20){mesasArray=[mesaObj1,mesaObj2,mesaObj3,mesaObj4,mesaObj5];}
 			var reservaObj={
 			fecha:req.param('txtfecha'),
 			hora:req.param('txthora'),
 			anombre:req.param('txtanombre'),
 			numpersonas:req.param('txtnumpersonas'),
 			cliente:userObj,
-			mesas:mesasArray
+			nummesas:mesasArray
+			//mesas:mesasArray
 			
 		}
 			Reserva.find().where({fecha:req.param('txtfecha')}).where({hora:req.param('txthora')}).exec(function (err, fechas){
@@ -69,7 +74,7 @@ new:function (req, res){
                     console.log("lista de reservas el mismo dia"+lista); 
                     console.log("fecha requerida= "+req.param('txtfecha'));
  					console.log("cupo restante:"+(100-capacidad));
- 					if (capacidad>100)
+ 					if (capacidad>99)
  					res.redirect('/sincupo');
 					else {
 
@@ -82,33 +87,22 @@ new:function (req, res){
 
 				return res.redirect('reserva/new');
 			}
-
-
 			
-
-			// Reserva.findOne(2).exec(function(err, reserva) {
- 		// 		 if(err)
-			// 	 reserva.mesas.add(1);
-			// 	 reserva.save(function(err) {});
-			// 	 });
-			var names = mesasArray.map(function(item) {
-   				 return item['id'];
-					});
-			sails.hooks.email.send("testEmail",{
-		    recipientName: req.user.username,
-		    senderName: "Lucia Restaurant ®",
-		    dia: req.param('txtfecha'),
-		    hora:req.param('txthora'),
-		    personas:req.param('txtnumpersonas'),
-		    mesas:names
-		 
-		  },
+						sails.hooks.email.send("testEmail",{
+					    recipientName: req.user.username,
+					    senderName: "Lucia Restaurant ®",
+					    dia: req.param('txtfecha'),
+					    hora:req.param('txthora'),
+					    personas:req.param('txtnumpersonas'),
+					    mesas:mesasArray
+					 
+		  				},
 		  {
 		    from: "Lucia Restaurant",
 		    to: "jadavila@udlanet.ec",
 		    subject: "Informacion de la reservación"
 		  },
-		  function(err) {console.log(err || "Email is sent");});
+		  function(err) {console.log(err || "Se envio el mail");});
 				res.redirect('reserva/exito/'+reserva.id);
 		});
 
@@ -147,7 +141,7 @@ new:function (req, res){
 
 	},
 	exito: function(req, res, next){
-		Reserva.findOne(req.param('id')).populate('mesas').exec(function reservaFounded(err,reserva){
+		Reserva.findOne(req.param('id')).exec(function reservaFounded(err,reserva){
 			if(err)
 				return next(err);
 			console.log(reserva);
